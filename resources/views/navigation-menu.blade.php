@@ -17,6 +17,10 @@
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('team') }}" :active="request()->routeIs('team')">
+                        {{ __('My Task') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('team') }}" :active="request()->routeIs('team')">
                         {{ __('Team') }}
                     </x-jet-nav-link>
                 </div>

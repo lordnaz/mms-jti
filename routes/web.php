@@ -28,7 +28,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/jti', function () {
+Route::get('/jti', function () {
     return view('components.jti-form');
 })->name('jti');
 
