@@ -1,10 +1,3 @@
-<?php 
-
-    $test = "Hello World!";
-
-    $date = date('d/m/Y h:i:s a', time());
-
-?>
 
 <x-guest-layout>
     <x-slot name="header">
@@ -27,30 +20,31 @@
                     </div>
                     </div>
                     <div class="mt-5 md:mt-0 md:col-span-2">
-                    <form action="#" method="POST">
+                    <form action="submit_jti" method="post" enctype="multipart/form-data">
+                        {{@csrf_field()}}
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">Company Name</label>
-                                        <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="company_name" class="block text-sm font-medium text-gray-700">Company Name</label>
+                                        <input type="text" name="company_name" id="company_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">PIC Name</label>
-                                        <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="pic_name" class="block text-sm font-medium text-gray-700">PIC Name</label>
+                                        <input type="text" name="pic_name" id="pic_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </div>
 
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">Date Issued</label>
-                                        <input value="{{$date}}" readonly type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="date_issued" class="block text-sm font-medium text-gray-700">Date Issued</label>
+                                        <input value="{{$current_dt}}" readonly type="text" name="date_issued" id="date_issued" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">Contact No.</label>
-                                        <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="contact" class="block text-sm font-medium text-gray-700">Contact No.</label>
+                                        <input type="text" name="contact" id="contact" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </div>
                                 <!-- <x-jet-section-border /> -->
@@ -68,13 +62,13 @@
 
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">Est. Volume</label>
-                                        <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="est_volume" class="block text-sm font-medium text-gray-700">Est. Volume</label>
+                                        <input type="text" name="est_volume" id="est_volume" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="country" class="block text-sm font-medium text-gray-700">Mode</label>
-                                        <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <label for="mode" class="block text-sm font-medium text-gray-700">Mode</label>
+                                        <select id="mode" name="mode" autocomplete="mode" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             <option>Land</option>
                                             <option>Sea</option>
                                             <option>Air</option>
@@ -84,13 +78,20 @@
 
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">Time</label>
-                                        <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                                        <input type="datetime-local" name="start_date" id="start_date" autocomplete="start_date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">Period</label>
-                                        <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
+                                        <input type="datetime-local" name="end_date" id="end_date" autocomplete="end_date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-6 gap-6">
+                                    <div class="col-span-6 sm:col-span-6">
+                                        <label for="period" class="block text-sm font-medium text-gray-700">Period</label>
+                                        <input type="text" name="period" id="period" autocomplete="period" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </div>
 
@@ -104,142 +105,146 @@
                                     <div class="grid grid-cols-8 gap-3">
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="comments" name="comments" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="packing" name="packing" type="checkbox" value="Packing" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="comments" class="font-medium text-gray-700">Packing</label>
+                                                <label for="packing" class="font-medium text-gray-700">Packing</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="candidates" name="candidates" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="unpacking" name="unpacking" type="checkbox" value="Unpacking" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="candidates" class="font-medium text-gray-700">Unpacking</label>
+                                                <label for="unpacking" class="font-medium text-gray-700">Unpacking</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="removals" name="removals" type="checkbox" value="Removals" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Removals</label>
+                                                <label for="removals" class="font-medium text-gray-700">Removals</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="trucking" name="trucking" type="checkbox" value="Trucking" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Trucking</label>
+                                                <label for="trucking" class="font-medium text-gray-700">Trucking</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="shipment" name="shipment" type="checkbox" value="Shipment" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Shipment</label>
+                                                <label for="shipment" class="font-medium text-gray-700">Shipment</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="import" name="import" type="checkbox" value="Import" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Import</label>
+                                                <label for="import" class="font-medium text-gray-700">Import</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="console" name="console" type="checkbox" value="Console" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Console</label>
+                                                <label for="console" class="font-medium text-gray-700">Console</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="intermove" name="intermove" value="Inter Move" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Inter Move</label>
+                                                <label for="intermove" class="font-medium text-gray-700">Inter Move</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="local" name="local" value="Local" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Local</label>
+                                                <label for="local" class="font-medium text-gray-700">Local</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="international" name="international" value="International" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">International</label>
+                                                <label for="international" class="font-medium text-gray-700">International</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="household" name="household" value="Household" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Household</label>
+                                                <label for="household" class="font-medium text-gray-700">Household</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="vehicle" name="vehicle" value="Vehicle" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Vehicle</label>
+                                                <label for="vehicle" class="font-medium text-gray-700">Vehicle</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-8 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="office_good" name="office_good" value="Office Goods" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Office Goods</label>
+                                                <label for="office_good" class="font-medium text-gray-700">Office Goods</label>
                                             </div>
                                         </div>
 
                                     </div>
                                 </fieldset>
 
+                                <x-jet-section-border />
                                 <div>
-                                    <label for="address" class="block text-sm font-medium text-gray-700">
-                                        Destination
-                                    </label>
-                                    <div class="mt-1">
-                                        <textarea id="address" name="address" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                    <legend class="text-base font-medium font-bold text-gray-900">Destination</legend>
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="from" class="block text-sm font-medium text-gray-700">From</label>
+                                            <input type="text" name="from" id="from" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="to" class="block text-sm font-medium text-gray-700">To</label>
+                                            <input type="text" name="to" id="to" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
                                     </div>
-                                    <p class="mt-2 text-sm text-gray-500">
-                                        Job destination
-                                    </p>
                                 </div>
 
                                 <div>
-                                    <label for="address" class="block text-sm font-medium text-gray-700">
+                                    <label for="job_instruction" class="block text-sm font-medium text-gray-700">
                                         Job Detail Instruction
                                     </label>
                                     <div class="mt-1">
-                                        <textarea id="address" name="address" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                        <textarea id="job_instruction" name="job_instruction" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
                                     </div>
                                     <p class="mt-2 text-sm text-gray-500">
                                         Detail instruction of the job if applicable
@@ -248,13 +253,13 @@
 
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">Manpower Required</label>
-                                        <input readonly type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="manpower" class="block text-sm font-medium text-gray-700">Manpower Required</label>
+                                        <input type="number" name="manpower" id="manpower" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first_name" class="block text-sm font-medium text-gray-700">Trucks</label>
-                                        <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="trucks" class="block text-sm font-medium text-gray-700">Trucks</label>
+                                        <input type="number" name="trucks" id="trucks" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </div>
 
@@ -269,7 +274,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Boxes - S [19 x 14 x 14"]
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m1" id="m1" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -278,7 +283,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Boxes - M [17 x 17 x 17"]
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m2" id="m2" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -287,7 +292,7 @@
                                             <span class="block w-72 inline-flex inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Boxes - M [18 x 18 x 18"]
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m3" id="m3" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -296,7 +301,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Boxes - L [ 19 x 19 x 30"]
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m4" id="m4" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -305,7 +310,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Boxes - [21 x 20 x 20"]
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m5" id="m5" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -314,7 +319,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Empty Boxes (USED)
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m6" id="m6" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -323,7 +328,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Corrugated Paper Roll
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m7" id="m7" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -332,7 +337,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Wardrobe / Hanging Ctn
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m8" id="m8" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -341,7 +346,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Air-Bubblepack
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m9" id="m9" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -350,7 +355,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             PE Foam
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m10" id="m10" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -359,7 +364,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             White Tape (Eco)
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m11" id="m11" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -368,7 +373,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             OPP Tape -"KLCCUH"
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m12" id="m12" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -377,7 +382,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             OPP Tape (Brown)
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m13" id="m13" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -386,7 +391,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Masking Tape
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m14" id="m14" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -395,7 +400,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Fragile Tape
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m15" id="m15" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -404,7 +409,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Stretch Film
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m16" id="m16" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -413,7 +418,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Newsprint Paper
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m17" id="m17" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -422,7 +427,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Steel Strapping Rope
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m18" id="m18" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -431,7 +436,7 @@
                                             <span class="block w-72 inline-flex items-center px-12 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Sticker Color
                                             </span>
-                                            <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                            <input type="number" name="m19" id="m19" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
                                         </div>
                                     </div>
 
@@ -447,156 +452,165 @@
                                     <div class="grid grid-cols-6 gap-3">
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="comments" name="comments" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e1" name="e1" type="checkbox" value="Two Wheel Trolley" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="comments" class="font-medium text-gray-700">Two Wheel Trolley</label>
+                                                <label for="e1" class="font-medium text-gray-700">Two Wheel Trolley</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="candidates" name="candidates" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e2" name="e2" type="checkbox" value="Four Wheel Trolley" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="candidates" class="font-medium text-gray-700">Four Wheel Trolley</label>
+                                                <label for="e2" class="font-medium text-gray-700">Four Wheel Trolley</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e3" name="e3" type="checkbox" value="Tools Set / Hand Drill Set" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Tools Set / Hand Drill Set</label>
+                                                <label for="e3" class="font-medium text-gray-700">Tools Set / Hand Drill Set</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e4" name="e4" type="checkbox" value="Weight Scale" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Weight Scale</label>
+                                                <label for="e4" class="font-medium text-gray-700">Weight Scale</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e5" name="e5" type="checkbox" value="Tape Measure" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Tape Measure</label>
+                                                <label for="e5" class="font-medium text-gray-700">Tape Measure</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e6" name="e6" type="checkbox" value="Pallet Jack" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Pallet Jack</label>
+                                                <label for="e6" class="font-medium text-gray-700">Pallet Jack</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e7" name="e7" type="checkbox" value="Wooden / Plastic pallet" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Wooden / Plastic pallet</label>
+                                                <label for="e7" class="font-medium text-gray-700">Wooden / Plastic pallet</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e8" name="e8" type="checkbox" value="Ramp [ Wooden / Steel ]" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Ramp [ Wooden / Steel ]</label>
+                                                <label for="e8" class="font-medium text-gray-700">Ramp [ Wooden / Steel ]</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e9" name="e9" type="checkbox" value="Plywood Sheets" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Plywood Sheets</label>
+                                                <label for="e9" class="font-medium text-gray-700">Plywood Sheets</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e10" name="e10" type="checkbox" value="Canvas" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Canvas</label>
+                                                <label for="e10" class="font-medium text-gray-700">Canvas</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e11" name="e11" type="checkbox" value="Cutter Seal" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Cutter Seal</label>
+                                                <label for="e11" class="font-medium text-gray-700">Cutter Seal</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e12" name="e12" type="checkbox" value="Wood (kocai / 2-3)" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Wood (kocai / 2-3)</label>
+                                                <label for="e12" class="font-medium text-gray-700">Wood (kocai / 2-3)</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e13" name="e13" type="checkbox" value="Crane - 5 / 10 / 20 / 40 tonage" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Crane - 5 / 10 / 20 / 40 tonage</label>
+                                                <label for="e13" class="font-medium text-gray-700">Crane - 5 / 10 / 20 / 40 tonage</label>
                                             </div>
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-2 flex">
                                             <div class="flex items-center h-5">
-                                                <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                <input id="e14" name="e14" type="checkbox" value="Forklift" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                                             </div>
                                             <div class="ml-3 text-sm">
-                                                <label for="offers" class="font-medium text-gray-700">Forklift</label>
+                                                <label for="e14" class="font-medium text-gray-700">Forklift</label>
                                             </div>
                                         </div>
 
                                     </div>
                                 </fieldset>
 
+                                <x-jet-section-border />
+
+                                <div class="grid grid-cols-6 gap-6">
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="assignto" class="block text-sm font-medium text-gray-700">Assign to (Project Manager)</label>
+                                        <select id="assignto" name="assignto" autocomplete="assignto" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <option value="" selected="true" disabled="">Select Project Manager</option>
+                                            @foreach($users as $user)
+                                                <option value="{{ $user->id }}" @if($user->id == $user->name) selected @endif>{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="sales_guy" class="block text-sm font-medium text-gray-700">Issued By</label>
+                                        <input type="text" name="sales_guy" id="sales_guy" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <p class="mt-2 text-sm text-red-500">
+                                            Sales person name
+                                        </p>
+                                    </div>
+                                </div>
+
                                 <div>
-                                    <label for="address" class="block text-sm font-medium text-gray-700">
+                                    <label for="special_instruct" class="block text-sm font-medium text-gray-700">
                                         Special Instruction
                                     </label>
                                     <div class="mt-1">
-                                        <textarea id="address" name="address" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                        <textarea id="special_instruct" name="special_instruct" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
                                     </div>
                                     <p class="mt-2 text-sm text-red-500">
                                         State any special instruction if applicable
                                     </p>
-                                </div>
-
-                                
-
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                    <label for="assignto" class="block text-sm font-medium text-gray-700">Assign to (Project Manager)</label>
-                                        <select id="assignto" name="assignto" autocomplete="assignto" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                            <option>Nazrul</option>
-                                            <option>Izhar</option>
-                                            <option>Albert</option>
-                                        </select>
-                                    </div>
                                 </div>
 
                             </div>
@@ -604,7 +618,7 @@
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
 
                                 <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Save
+                                Submit
                                 </button>
                             </div>
                         </div>

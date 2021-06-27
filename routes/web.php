@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JtiController;
+use App\Http\Controllers\MyTaskController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,23 +19,38 @@ use App\Http\Controllers\JtiController;
 
 Route::get('/', function () {
     if(auth()->user()){
-        return redirect('dashboard');
+        return redirect('home');
     }else{
         // return view('auth.login');
         return redirect('login');
     }
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/dashboard', function () {
+    return redirect('home');
+});
 
 
-Route::get('/jti', function () {
-    return view('components.jti-form');
-})->name('jti');
+// Route::get('/jti', function () {
+//     return view('components.jti-form');
+// })->name('jti');
+
+// Route::post('test', JtiController);
+Route::get('/jti', [JtiController::class, 'getAllUser'])->name('jti_form');
+
+Route::post('/submit_jti', [JtiController::class, 'submitForm']);
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/team', function () {
-    return view('components.team');
-})->name('team');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/team', function () {
+//     return view('components.team');
+// })->name('team');
+Route::get('/team', [TeamController::class, 'index'])->name('team');
+
+
+Route::get('/mytask', [MyTaskController::class, 'index'])->name('mytask');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/jti_actual', function () {
+    return view('components.jti-actual');
+})->name('jti_actual');
