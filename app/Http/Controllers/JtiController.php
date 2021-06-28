@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\User as User;
 use App\Models\JtiPlan as JtiPlan;
 
+// from external DB 
+use App\Models\JtiSales as JtiSales;
+use App\Models\CompanyClientSales as CompanyClient;
+use App\Models\QuotationSales as Quotation;
+use App\Models\UserSales as UserSales;
+use App\Models\StateSales as States;
+use App\Models\CountrySales as Countries;
+use App\Models\JtiCreatedSales as JtiCreated;
+
 class JtiController extends Controller
 {
     /**
@@ -24,18 +33,63 @@ class JtiController extends Controller
         
     }
 
-    public function getAllUser(){
+    public function goToJtiActual($jti_no){
+
+        // return view('components.jti-actual', compact('jti_no'));
+
+        $JtiRecordDetails = JtiPlan::where('running_no', $jti_no)
+                                ->get()
+                                ->first();
+        
+        return view('components.jti-actual', compact('jti_no', 'JtiRecordDetails'));
+
+    }
+
+    public function getAllUser($quote_no){
 
         $users = User::all();
-        
-        $current_dt = date('d/m/Y h:i:s a', time());
 
-        return view('components.jti-form', compact('users', 'current_dt'));
+        $quotation = Quotation::where('identifier', $quote_no)
+                                    ->get()
+                                    ->first();
+
+        $company = CompanyClient::where('id', $quotation['created_for_company'])
+                                    ->get()
+                                    ->first();
+        
+        $state = States::where('id', $company['state_id'])
+                                    ->get('name')
+                                    ->first();
+
+        $country = Countries::where('id', $company['country_id'])
+                                    ->get('name')
+                                    ->first();
+
+        $issued_by = UserSales::where('id', $quotation['created_by'])
+                                    ->get('fullname')
+                                    ->first();  
+                                    
+        $officer = UserSales::where('id', $quotation['created_for_pic'])
+                                    ->get()
+                                    ->first();
+                            
+
+        // return $jti_sales_data; 
+        
+        // $current_dt = date('d/m/Y h:i:s a', time());
+
+        return view('components.jti-form', compact('users', 'quotation', 'company', 'issued_by', 'officer', 'state', 'country'));
     }
 
     public function submitForm(Request $req){
 
         $data = $req->input();
+        // $file = $req->file('file-upload');
+
+        // array_push($data, $file));
+        // return $data;
+
+        // die();
 
         $currentdt = date('d-m-Y H:i:s');
         
@@ -329,14 +383,18 @@ class JtiController extends Controller
 
         $count++;
 
+        $gen_jti = "JTI_".$count;
+
         $jtiplan = new JtiPlan;
 
-        $jtiplan->running_no = "test_run_no_".$count;
+        $jtiplan->quotation_no = $req->quote_no;
+        $jtiplan->running_no = $gen_jti;
         $jtiplan->issued_by = $req->sales_guy;
         $jtiplan->assign_to = $req->assignto;
         $jtiplan->company_name = $req->company_name;
         $jtiplan->pic_name = $req->pic_name;
         $jtiplan->company_address = $req->address;
+        $jtiplan->contact = $req->contact;
         $jtiplan->volume = $req->est_volume;
         $jtiplan->mode = $req->mode;
         $jtiplan->start_date = $req->start_date;
@@ -356,7 +414,21 @@ class JtiController extends Controller
 
         $jtiplan->save();
 
-        return redirect()->route('jti_form');
+        // check jti if created
+        $exists = JtiPlan::where('quotation_no', $req->quote_no)->exists();
+
+        if($exists){
+            $jti_created = new JtiCreated;
+
+            $jti_created->quote_no = $req->quote_no;
+            $jti_created->jti_no = $gen_jti;
+            $jti_created->created_at = $currentdt;
+
+            $jti_created->save();
+        }
+        // JtiCreated
+
+        return redirect()->route('jti_form', ['quote_no' => $req->quote_no]);
     }
 
     /**

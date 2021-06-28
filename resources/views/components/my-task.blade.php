@@ -69,10 +69,10 @@
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <?php echo date_format($jti->created_at,"Y/m/d g:i:s a"); ?>
+                                        {{ Carbon\Carbon::parse($jti->created_at)->format('d/m/Y g:i:s a') }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a href="{{route('jti_actual')}}" class="text-indigo-600 hover:text-indigo-900">Open</a>
+                                        <a href="{{route('jti_actual', $jti->running_no)}}" class="text-indigo-600 hover:text-indigo-900">Open</a>
                                     </td>
                                 </tr>
                                 @endforeach

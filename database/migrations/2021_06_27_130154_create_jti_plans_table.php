@@ -15,12 +15,14 @@ class CreateJtiPlansTable extends Migration
     {
         Schema::create('jti_plans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('quotation_no')->unique();
             $table->string('running_no')->unique();
             $table->string('issued_by');
             $table->integer('assign_to');
             $table->string('company_name');
             $table->string('pic_name');
             $table->string('company_address');
+            $table->string('contact');
             $table->string('volume');
             $table->string('mode');
             $table->timestamp('start_date');

@@ -36,7 +36,9 @@ Route::get('/dashboard', function () {
 // })->name('jti');
 
 // Route::post('test', JtiController);
-Route::get('/jti', [JtiController::class, 'getAllUser'])->name('jti_form');
+// Route::get('/jti', [JtiController::class, 'getAllUser'])->name('jti_form');
+Route::get('/jti/{quote_no}', [JtiController::class, 'getAllUser'])->where('quote_no', '.*')->name('jti_form');
+// Route::get('/create_jti/{job_id}', [JtiController::class, 'getAllUser'])->where('job_id', '.*')->name('jti_form');
 
 Route::post('/submit_jti', [JtiController::class, 'submitForm']);
 
@@ -51,6 +53,11 @@ Route::get('/mytask', [MyTaskController::class, 'index'])->name('mytask');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/jti_actual', function () {
-    return view('components.jti-actual');
-})->name('jti_actual');
+// Route::get('/jti_actual/{jti_no}', function () {
+//     // return view('components.jti-actual');
+//     // return view('components.jti-actual', compact('jti_no'));
+// })->name('jti_actual');
+
+Route::get('/jti_actual/{jti_no}', [JtiController::class, 'goToJtiActual'])->name('jti_actual');
+
+// Route::get('/test', [JtiController::class, 'test'])->name('test');

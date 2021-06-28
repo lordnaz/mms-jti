@@ -20,31 +20,91 @@
                     </div>
                     </div>
                     <div class="mt-5 md:mt-0 md:col-span-2">
-                    <form action="submit_jti" method="post" enctype="multipart/form-data">
+
+                    <!-- card header  -->
+                    <div class="bg-red-600">
+                        <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+                            <div class="flex items-center justify-between flex-wrap">
+                                <div class="w-0 flex-1 flex items-center">
+                                    <span class="flex p-2 rounded-lg bg-red-800">
+                                    <!-- Heroicon name: outline/speakerphone -->
+                                    
+                                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+                                    </svg>
+                                    </span>
+                                    <p class="ml-3 font-medium text-white truncate">
+                                    <span class="md:hidden text-base text-xl font-bold">
+                                    {{$quotation->identifier}}
+                                    </span>
+                                    <span class="hidden md:inline text-base text-xl font-bold">
+                                    {{$quotation->identifier}}
+                                    </span>
+                                    </p>
+                                </div>                                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end of card header  -->
+
+                    <form action="/submit_jti" method="post" enctype="multipart/form-data" accept-charset='UTF-8'>
                         {{@csrf_field()}}
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div class="grid grid-cols-6 gap-6">
+
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="company_name" class="block text-sm font-medium text-gray-700">Company Name</label>
-                                        <input type="text" name="company_name" id="company_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="po_no" class="block text-sm font-medium text-gray-700">PO No.</label>
+                                        <input type="text" name="po_no" id="po_no" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="pic_name" class="block text-sm font-medium text-gray-700">PIC Name</label>
-                                        <input type="text" name="pic_name" id="pic_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label class="block text-sm font-medium text-gray-700">
+                                            PO Attachment
+                                        </label>
+                                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                            <div class="space-y-1 text-center">
+                                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <div class="flex text-sm text-gray-600">
+                                                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                    <span>Upload a file</span>
+                                                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                    </label>
+                                                    <p class="pl-1">or drag and drop</p>
+                                                </div>
+                                                <p class="text-xs text-gray-500">
+                                                    PNG, JPG, GIF up to 10MB
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="grid grid-cols-6 gap-6">
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="quote_no" class="block text-sm font-medium text-gray-700">Quotation No.</label>
+                                        <input readonly value="{{$quotation->identifier}}" type="text" name="quote_no" id="quote_no" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="company_name" class="block text-sm font-medium text-gray-700">Company Name</label>
+                                        <input readonly value="{{$company->name}}" type="text" name="company_name" id="company_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </div>
 
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="date_issued" class="block text-sm font-medium text-gray-700">Date Issued</label>
-                                        <input value="{{$current_dt}}" readonly type="text" name="date_issued" id="date_issued" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="pic_name" class="block text-sm font-medium text-gray-700">PIC Name</label>
+                                        <input readonly value="{{$officer->fullname}}" type="text" name="pic_name" id="pic_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
-
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="contact" class="block text-sm font-medium text-gray-700">Contact No.</label>
-                                        <input type="text" name="contact" id="contact" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <input readonly value="{{$officer->phoneno}}" type="text" name="contact" id="contact" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </div>
                                 <!-- <x-jet-section-border /> -->
@@ -53,7 +113,7 @@
                                         Address
                                     </label>
                                     <div class="mt-1">
-                                        <textarea id="address" name="address" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                        <textarea readonly id="address" name="address" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{$company->address}}, {{$company->postcode}}, {{$state->name}}, {{$country->name}}.</textarea>
                                     </div>
                                     <p class="mt-2 text-sm text-gray-500">
                                         Full address of the company
@@ -584,7 +644,7 @@
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="assignto" class="block text-sm font-medium text-gray-700">Assign to (Project Manager)</label>
-                                        <select id="assignto" name="assignto" autocomplete="assignto" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <select required id="assignto" name="assignto" autocomplete="assignto" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             <option value="" selected="true" disabled="">Select Project Manager</option>
                                             @foreach($users as $user)
                                                 <option value="{{ $user->id }}" @if($user->id == $user->name) selected @endif>{{ $user->name }}</option>
@@ -594,7 +654,7 @@
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="sales_guy" class="block text-sm font-medium text-gray-700">Issued By</label>
-                                        <input type="text" name="sales_guy" id="sales_guy" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <input readonly value="{{$issued_by->fullname}}" type="text" name="sales_guy" id="sales_guy" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         <p class="mt-2 text-sm text-red-500">
                                             Sales person name
                                         </p>
