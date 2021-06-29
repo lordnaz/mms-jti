@@ -15,7 +15,7 @@
                     <div class="px-4 sm:px-0">
                         <h3 class="text-lg font-medium font-bold leading-6 text-gray-900">JTI Form</h3>
                         <p class="mt-1 text-sm text-gray-600">
-                        Complete the form &amp; submit it to the project team.
+                            Complete the form &amp; submit it to the project team.
                         </p>
                     </div>
                     </div>

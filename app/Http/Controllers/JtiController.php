@@ -84,12 +84,7 @@ class JtiController extends Controller
     public function submitForm(Request $req){
 
         $data = $req->input();
-        // $file = $req->file('file-upload');
-
-        // array_push($data, $file));
-        // return $data;
-
-        // die();
+    
 
         $currentdt = date('d-m-Y H:i:s');
         
@@ -379,6 +374,13 @@ class JtiController extends Controller
 
         // return $EquipmentList;
 
+        //file attachment section
+        $file = $req->file('file-upload');
+        $po_encoded = base64_encode(file_get_contents($req->file('file-upload')));
+        $mime_type = $file->getClientmimeType();
+
+        $po_string = "data:".$mime_type.";base64,".$po_encoded;
+
         $count = JtiPlan::count();
 
         $count++;
@@ -389,6 +391,8 @@ class JtiController extends Controller
 
         $jtiplan->quotation_no = $req->quote_no;
         $jtiplan->running_no = $gen_jti;
+        $jtiplan->po_no = $req->po_no;
+        $jtiplan->po_attachment = $po_string;
         $jtiplan->issued_by = $req->sales_guy;
         $jtiplan->assign_to = $req->assignto;
         $jtiplan->company_name = $req->company_name;
@@ -422,6 +426,7 @@ class JtiController extends Controller
 
             $jti_created->quote_no = $req->quote_no;
             $jti_created->jti_no = $gen_jti;
+            $jti_created->po_no = $req->po_no;
             $jti_created->created_at = $currentdt;
 
             $jti_created->save();

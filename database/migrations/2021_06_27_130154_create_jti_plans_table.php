@@ -17,6 +17,8 @@ class CreateJtiPlansTable extends Migration
             $table->increments('id');
             $table->string('quotation_no')->unique();
             $table->string('running_no')->unique();
+            $table->string('po_no')->unique();
+            $table->longText('po_attachment');
             $table->string('issued_by');
             $table->integer('assign_to');
             $table->string('company_name');
