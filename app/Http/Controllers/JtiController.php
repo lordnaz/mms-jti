@@ -40,8 +40,10 @@ class JtiController extends Controller
         $JtiRecordDetails = JtiPlan::where('running_no', $jti_no)
                                 ->get()
                                 ->first();
+
+        $mode = $JtiRecordDetails->mode;
         
-        return view('components.jti-actual', compact('jti_no', 'JtiRecordDetails'));
+        return view('components.jti-actual', compact('jti_no', 'JtiRecordDetails', 'mode'));
 
     }
 

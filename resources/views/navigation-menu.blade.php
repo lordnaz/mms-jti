@@ -26,12 +26,15 @@ $task_counter = session()->get('task_counter');
                     <x-jet-nav-link href="{{ route('mytask') }}" :active="request()->routeIs('mytask')">
                         {{ __('My Task') }} 
                         @if($task_counter > 0)
-                            &nbsp;<span class="badge badge-danger">{{$task_counter}} new</span>
+                            <!-- &nbsp;<span class="badge badge-danger">{{$task_counter}} new</span> -->
+                            &nbsp;<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                            {{$task_counter}} new
+                            </span>
                         @endif
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('team') }}" :active="request()->routeIs('team')">
-                        {{ __('Team') }}
+                        {{ __('Logistic') }}
                     </x-jet-nav-link>
                 </div>
 
@@ -164,12 +167,13 @@ $task_counter = session()->get('task_counter');
             <x-jet-responsive-nav-link href="{{ route('mytask') }}" :active="request()->routeIs('mytask')">
                 {{ __('My Task') }}
                 @if($task_counter > 0)
-                    &nbsp;<span class="badge badge-danger">{{$task_counter}} new</span>
+                    <!-- &nbsp;<span class="badge badge-danger">{{$task_counter}} new</span> -->
+                    <span class="badge bg-danger">Danger</span>
                 @endif
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{ route('team') }}" :active="request()->routeIs('team')">
-                {{ __('Team') }}
+                {{ __('Logistic') }}
             </x-jet-responsive-nav-link>
         </div>
 

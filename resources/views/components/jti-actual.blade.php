@@ -29,9 +29,9 @@
                                         <span class="flex p-2 rounded-lg bg-red-800">
                                         <!-- Heroicon name: outline/speakerphone -->
                                         
-                                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
-                                        </svg>
+                                            <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+                                            </svg>
                                         </span>
                                         <p class="ml-3 font-medium text-white truncate">
                                         <span class="md:hidden text-base text-xl font-bold">
@@ -40,6 +40,7 @@
                                         <span class="hidden md:inline text-base text-xl font-bold">
                                             {{$jti_no}}
                                         </span>
+                                        
                                         </p>
                                     </div>                                    
                                 </div>
@@ -93,7 +94,11 @@
 
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="mode" class="block text-sm font-medium text-gray-700">Mode</label>
-                                            <input type="text" value="{{$JtiRecordDetails->mode}}" name="mode" id="mode" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            <select id="mode" name="mode" autocomplete="mode" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                <option value="Land" <?php if($mode=="Land") echo 'selected="selected"'; ?>>Land</option>
+                                                <option value="Sea" <?php if($mode=="Sea") echo 'selected="selected"'; ?> >Sea</option>
+                                                <option value="Air" <?php if($mode=="Air") echo 'selected="selected"'; ?> >Air</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -115,57 +120,98 @@
                                             <input type="text" value="{{$JtiRecordDetails->period}}" name="period" id="period" autocomplete="period" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                     </div>
-
+                                    
                                     <div>
-                                        <label for="about" class="block text-sm font-medium text-gray-700">
-                                            About
-                                        </label>
-                                        <div class="mt-1">
-                                            <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
-                                        </div>
-                                        <p class="mt-2 text-sm text-gray-500">
-                                            Brief description for your profile. URLs are hyperlinked.
-                                        </p>
-                                    </div>
+                                        <!-- <legend class="text-base font-medium font-bold text-gray-900">Destination</legend> -->
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="from" class="block text-sm font-medium text-gray-700">Destination (From)</label>
+                                                <input readonly type="text" value="{{$JtiRecordDetails->from_destination}}" name="from" id="from" autocomplete="given-name" class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
 
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">
-                                            Photo
-                                        </label>
-                                        <div class="mt-1 flex items-center">
-                                            <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                            <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                                            </svg>
-                                            </span>
-                                            <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            Change
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">
-                                            Cover photo
-                                        </label>
-                                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                            <div class="space-y-1 text-center">
-                                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                                <div class="flex text-sm text-gray-600">
-                                                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                                    <span>Upload a file</span>
-                                                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                                                    </label>
-                                                    <p class="pl-1">or drag and drop</p>
-                                                </div>
-                                                <p class="text-xs text-gray-500">
-                                                    PNG, JPG, GIF up to 10MB
-                                                </p>
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="to" class="block text-sm font-medium text-gray-700">Destination (To)</label>
+                                                <input readonly type="text" value="{{$JtiRecordDetails->to_destination}}" name="to" id="to" autocomplete="given-name" class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div>
+                                        <label for="job_instruction" class="block text-sm font-medium text-gray-700">
+                                            Job Detail Instruction
+                                        </label>
+                                        <div class="mt-1">
+                                            <textarea readonly id="job_instruction" name="job_instruction" rows="3" class="shadow-sm bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{$JtiRecordDetails->job_details}}</textarea>
+                                        </div>
+                                        <p class="mt-2 text-sm text-gray-500">
+                                            Detail instruction of the job if applicable
+                                        </p>
+                                    </div>
+
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="manpower" class="block text-sm font-medium text-gray-700">Manpower Required</label>
+                                            <input type="number" value="{{$JtiRecordDetails->manpower}}" name="manpower" id="manpower" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="trucks" class="block text-sm font-medium text-gray-700">Trucks</label>
+                                            <input type="number" value="{{$JtiRecordDetails->trucks}}" name="trucks" id="trucks" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="sales_guy" class="block text-sm font-medium text-gray-700">Issued By</label>
+                                            <input readonly value="{{$JtiRecordDetails->issued_by}}" type="text" name="sales_guy" id="sales_guy" autocomplete="given-name" class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            <p class="mt-2 text-sm text-gray-500">
+                                                Sales person name
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label for="special_instruct" class="block text-sm font-medium text-gray-700">
+                                            Special Instruction
+                                        </label>
+                                        <div class="mt-1">
+                                            <textarea readonly id="special_instruct" name="special_instruct" rows="3" class="shadow-sm bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{$JtiRecordDetails->special_instruction}}</textarea>
+                                        </div>
+                                        <p class="mt-2 text-sm text-gray-500">
+                                            State any special instruction if applicable
+                                        </p>
+                                    </div>
+
+                                    <x-jet-section-border />
+
+                                    <legend class="text-base font-medium font-bold text-gray-900">Job Description</legend>
+                                    <br>
+                                    <div>
+                                        <div class="mt-1">
+                                            <textarea readonly id="joblist" name="joblist" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{$JtiRecordDetails->job_list}}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <x-jet-section-border />
+
+                                    <legend class="text-base font-medium font-bold text-gray-900">Material Required</legend>
+                                    <br>
+                                    <div>
+                                        <div class="mt-1">
+                                            <textarea readonly id="material" name="material" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{$JtiRecordDetails->material_list}}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <x-jet-section-border />
+
+                                    <legend class="text-base font-medium font-bold text-gray-900">Equipment</legend>
+                                    <br>
+                                    <div>
+                                        <div class="mt-1">
+                                            <textarea readonly id="equipment" name="equipment" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{$JtiRecordDetails->equipment_list}}</textarea>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                     <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
