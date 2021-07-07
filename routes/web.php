@@ -41,6 +41,7 @@ Route::get('/jti/{quote_no}', [JtiController::class, 'getAllUser'])->where('quot
 // Route::get('/create_jti/{job_id}', [JtiController::class, 'getAllUser'])->where('job_id', '.*')->name('jti_form');
 
 Route::post('/submit_jti', [JtiController::class, 'submitForm']);
+Route::post('/confirm_jti/{jti_no}', [JtiController::class, 'confirmForm']);
 
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/team', function () {
