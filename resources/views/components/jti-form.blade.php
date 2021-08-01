@@ -63,14 +63,19 @@
                                         <label class="block text-sm font-medium text-gray-700">
                                             PO Attachment
                                         </label>
-                                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                        <!-- <input type="file" name="file-upload" id="file-upload" > -->
+                                        <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 border-2 border-indigo-500 p-1.5">
+                                            <span>Click to Upload</span>
+                                            <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                        </label>
+                                        <!-- <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                             <div class="space-y-1 text-center">
                                                 <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                                                     <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                                 <div class="flex text-sm text-gray-600">
                                                     <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                                    <span>Upload a file</span>
+                                                    <span>Click to upload a file</span>
                                                     <input id="file-upload" name="file-upload" type="file" class="sr-only">
                                                     </label>
                                                     <p class="pl-1">or drag and drop</p>
@@ -79,7 +84,7 @@
                                                     PNG, JPG, GIF up to 10MB
                                                 </p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                 </div>
@@ -159,128 +164,239 @@
                                 
                                 <fieldset>
                                     <legend class="text-base font-medium font-bold text-gray-900">Job Description</legend>
-                                    <small class="text-muted">( You can choose more than one option. )</small>
-                                    <br><br>
+                                    <!-- <small class="text-muted">( You can choose more than one option. )</small> -->
 
-                                    <div class="grid grid-cols-8 gap-3">
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="packing" name="packing" type="checkbox" value="Packing" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                    <div class="card border-dark mb-3">
+                                        <div class="card-header">Packing</div>
+                                        <div class="card-body text-dark">
+
+                                            <!-- <br> -->
+                                            <p>
+                                                <a class="btn btn-primary" data-toggle="collapse" href="#international" role="button" aria-expanded="false" aria-controls="international">
+                                                    International
+                                                </a>
+                                            </p>
+
+                                            <!-- Internation Section  -->
+                                            <div class="mt-4 space-y-4 collapse" id="international">
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="inter_household" name="inter_household" type="checkbox" value="inter_household" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="inter_household" class="font-medium text-gray-700">Household effects</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="inter_office" name="inter_office" type="checkbox" value="inter_office" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="inter_office" class="font-medium text-gray-700">Office goods</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="inter_industry" name="inter_industry" type="checkbox" value="inter_industry" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="inter_industry" class="font-medium text-gray-700">Industrial equipment</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="inter_vehicle" name="inter_vehicle" type="checkbox" value="inter_vehicle" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="inter_vehicle" class="font-medium text-gray-700">Vehicle</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="packing" class="font-medium text-gray-700">Packing</label>
+
+                                            <br>
+
+                                            <p>
+                                                <a class="btn btn-primary" data-toggle="collapse" href="#domestic_east" role="button" aria-expanded="false" aria-controls="domestic_east">
+                                                    Domestic ( Sabah/Sarawak )
+                                                </a>
+                                            </p>
+
+                                            <!-- Domestic East Section  -->
+                                            <div class="mt-4 space-y-4 collapse" id="domestic_east">
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="dome_household" name="dome_household" type="checkbox" value="inter_household" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="dome_household" class="font-medium text-gray-700">Household effects</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="dome_office" name="dome_office" type="checkbox" value="inter_office" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="dome_office" class="font-medium text-gray-700">Office goods</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="dome_industry" name="dome_industry" type="checkbox" value="inter_industry" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="dome_industry" class="font-medium text-gray-700">Industrial equipment</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="dome_vehicle" name="dome_vehicle" type="checkbox" value="inter_vehicle" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="dome_vehicle" class="font-medium text-gray-700">Vehicle</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+
+                                            <p>
+                                                <a class="btn btn-primary" data-toggle="collapse" href="#domestic_west" role="button" aria-expanded="false" aria-controls="domestic_west">
+                                                    Domestic ( Peninsular )
+                                                </a>
+                                            </p>
+
+                                            <!-- Domestic West Section  -->
+                                            <div class="mt-4 space-y-4 collapse" id="domestic_west">
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="domw_household" name="domw_household" type="checkbox" value="inter_household" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="domw_household" class="font-medium text-gray-700">Household effects</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="domw_office" name="domw_office" type="checkbox" value="inter_office" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="domw_office" class="font-medium text-gray-700">Office goods</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="domw_industry" name="domw_industry" type="checkbox" value="inter_industry" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="domw_industry" class="font-medium text-gray-700">Industrial equipment</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="domw_vehicle" name="domw_vehicle" type="checkbox" value="inter_vehicle" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="domw_vehicle" class="font-medium text-gray-700">Vehicle</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+
+                                            <p>
+                                                <a class="btn btn-primary" data-toggle="collapse" href="#storage" role="button" aria-expanded="false" aria-controls="storage">
+                                                    Storage
+                                                </a>
+                                            </p>
+
+                                            <!-- Storage Section  -->
+                                            <div class="mt-4 space-y-4 collapse" id="storage">
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="storage_household" name="storage_household" type="checkbox" value="inter_household" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="storage_household" class="font-medium text-gray-700">Household effects</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="storage_office" name="storage_office" type="checkbox" value="inter_office" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="storage_office" class="font-medium text-gray-700">Office goods</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="storage_industry" name="storage_industry" type="checkbox" value="inter_industry" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="storage_industry" class="font-medium text-gray-700">Industrial equipment</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="col-span-8 sm:col-span-2 flex">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="storage_vehicle" name="storage_vehicle" type="checkbox" value="inter_vehicle" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                                        </div>
+                                                        <div class="ml-3 text-sm">
+                                                            <label for="storage_vehicle" class="font-medium text-gray-700">Vehicle</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+
+                                            <p>
+                                                <a class="btn btn-primary" data-toggle="collapse" href="#others" role="button" aria-expanded="false" aria-controls="others">
+                                                    Others
+                                                </a>
+                                            </p>
+
+                                            <!-- Other Section  -->
+                                            <div class="mt-4 space-y-4 collapse" id="others">
+                                                <div class="grid grid-cols-6 gap-6">
+                                                    <div class="col-span-6 sm:col-span-6">
+                                                        <label for="others_details" class="block text-sm font-medium text-gray-700">Others Details</label>
+                                                        <input type="text" name="others_details" id="others_details" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="unpacking" name="unpacking" type="checkbox" value="Unpacking" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="unpacking" class="font-medium text-gray-700">Unpacking</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="removals" name="removals" type="checkbox" value="Removals" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="removals" class="font-medium text-gray-700">Removals</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="trucking" name="trucking" type="checkbox" value="Trucking" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="trucking" class="font-medium text-gray-700">Trucking</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="shipment" name="shipment" type="checkbox" value="Shipment" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="shipment" class="font-medium text-gray-700">Shipment</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="import" name="import" type="checkbox" value="Import" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="import" class="font-medium text-gray-700">Import</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="console" name="console" type="checkbox" value="Console" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="console" class="font-medium text-gray-700">Console</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="intermove" name="intermove" value="Inter Move" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="intermove" class="font-medium text-gray-700">Inter Move</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="local" name="local" value="Local" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="local" class="font-medium text-gray-700">Local</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="international" name="international" value="International" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="international" class="font-medium text-gray-700">International</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="household" name="household" value="Household" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="household" class="font-medium text-gray-700">Household</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="vehicle" name="vehicle" value="Vehicle" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="vehicle" class="font-medium text-gray-700">Vehicle</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-8 sm:col-span-2 flex">
-                                            <div class="flex items-center h-5">
-                                                <input id="office_good" name="office_good" value="Office Goods" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="office_good" class="font-medium text-gray-700">Office Goods</label>
-                                            </div>
-                                        </div>
-
                                     </div>
+                                    
                                 </fieldset>
 
                                 <x-jet-section-border />

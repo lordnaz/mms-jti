@@ -36,7 +36,7 @@
 
                             <div class="alert alert-info d-flex align-items-center" role="alert">
                                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-                                <div>
+                                <div style="padding-left: 10px;">
                                 This form data is estimation from the Sales Team. Project Manager will analyze and give the actual input to record the actual JTI Form  value, together with task tracking record
                                 </div>
                             </div>
@@ -519,13 +519,14 @@
 
                                     </div>
 
-                                    <legend class="text-base font-medium font-bold text-gray-900">Equipment</legend>
                                     <br>
-                                    <div>
+                                    <legend class="text-base font-medium font-bold text-gray-900">Equipment</legend>
+                                    <!-- <br> -->
+                                    <!-- <div>
                                         <div class="mt-1">
                                             <textarea readonly id="equipment" name="equipment" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{$JtiRecordDetails->equipment_list}}</textarea>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="grid grid-cols-6 gap-3">
                                         <div class="col-span-6 sm:col-span-2 flex">
@@ -663,7 +664,7 @@
                                         <!-- <p class="text-sm text-gray-500">These section is for the actual task updated by the Project Manager or Supervisor who are involved with the Operation/Project team.</p> -->
                                         <div class="alert alert-info d-flex align-items-center" role="alert">
                                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-                                            <div>
+                                            <div style="padding-left: 10px;">
                                             Once this JTI form has been updated by the project team. A task tracker will be created base on this JTI form.
                                             </div>
                                         </div>
